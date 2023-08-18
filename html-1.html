@@ -1,0 +1,144 @@
+
+<br> <br>
+
+<?php ?>
+
+catagory table
+
+cat_id		
+cat_name
+cat_edate
+
+
+$cat_id
+$cat_name
+$cat_edate
+
+Computer
+Stationary
+Mobile
+
+
+mouse
+keyboard
+Pendrive
+
+book
+pen
+paper
+
+mobile
+cover
+headphone
+
+{% comment %} {% comment %} <!Doctype html>
+    <head>
+        <title>Add Catagory</title>
+    </head>
+    <body>
+        <?php ?>
+        <h1>Add Catagory</h1>
+        <form action="add_cat.php" method="GET">
+            Catagory <br> <br>
+            <input type="text" name="cat_name"><br> <br>
+            Catagory Entry Date<br> <br>
+            <input type="date" name="cat_edate"><br> <br>
+            <input type="submit" value="submit">
+        </form>
+    </body> {% endcomment %}
+
+</html> {% endcomment %}
+$sql = "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com')";
+
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$sql= "SELECT * from cat_list WHERE cat_id =$get_id  ";
+
+
+<?php
+if(isset($_GET['id'])){
+  $get_id =  $_GET['id'];
+
+  $sql= "SELECT * from cat_list WHERE cat_id =$get_id  ";
+
+  $query = $conn->query($sql);
+
+  $data= mysqli_fetch_array($query);
+
+  $cat_id     = $data['cat_id'];
+  $cat_name   = $data['cat_name'];
+  $cat_edate  = $data['cat_edate'];
+ }
+ ?>
+
+
+ <?php
+        if(isset($_GET['prod_name'])){
+           $new__name   = $_GET['prod_name'];
+           $new_prod_cat    = $_GET['prod_cat'];
+           $new_prod_code   = $_GET['prod_code'];
+           $new_prod_edate  = $_GET['prod_edate'];
+           $new_prod_id     = $_GET['prod_id'];
+           
+
+           $sql= "UPDATE product_list SET
+                 prod_id = '$new_prod_id',
+                prod_name = '$new_prod_name',
+                prod_cat = '$new_prod_cat',
+                prod_code ='$new_prod_code',
+                prod_edate ='$new_prod_edate'
+                WHERE prod_id= $new_prod_id";
+                
+            if ($conn->query($sql) === TRUE){
+                header('location:list_prod.php');
+                } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+        
+        }
+
+?>
+
+
+<?php include('script.php'); ?>
+            
+    </head>
+    <body>
+    <div class="container">
+		<!------navbar start------->
+		<div class="container-fluid p-2 bg-success ">
+			<!-- <h1 class=" text-info text-center">Store Manegement System</h1> -->
+			<?php include('navbar.php'); ?>
+
+		</div>
+			<div class="h4 pb-2 mb-4  border-bottom border-info"></div>
+		<!------navbar end------->
+		
+		<!------Left Menu start------->
+		<div class="container-fluid">  <!------Left Menu Start------->
+			<div class="row bg-light">
+				
+			<?php include('leftbar.php'); ?>
+				
+		<!------Left Menu end------->
+
+				<div class="col-sm-9"><!------MAin Menu start------->
+          
+          </div>				
+			</div>
+		</div>    <!------Main Menu end------->
+		<!------footer end------->
+		<div class="container-fluid p-1 bg-success text-center fs-4 text-white">
+			<!-- <p>copyright&copy; soab technology@2022</p>  include -->
+			<?php include('footer.php'); ?>
+		</div>
+
+		<!------footer Menu end------->
+		
+			
+	</div>
